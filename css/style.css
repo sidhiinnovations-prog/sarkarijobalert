@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* CONTAINER */
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* HEADER */
+
+.header {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.header h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 18px;
+}
+
+/* NAVBAR */
+
+.navbar {
+  background: #dc2626;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  background: #b91c1c;
+}
+
+/* HERO SECTION */
+
+.hero {
+  background: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h2 {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* CATEGORY SECTION */
+
+.categories {
+  padding: 50px 0;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.category-box {
+  color: white;
+  padding: 35px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.category-box:hover {
+  transform: translateY(-5px);
+}
+
+.jobs {
+  background: #2563eb;
+}
+
+.results {
+  background: #16a34a;
+}
+
+.admit {
+  background: #ea580c;
+}
+
+.answer {
+  background: #7c3aed;
+}
+
+/* LATEST UPDATES */
+
+.latest-updates {
+  padding: 60px 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.update-card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 5px solid #dc2626;
+  transition: 0.3s;
+}
+
+.update-card:hover {
+  transform: translateY(-3px);
+}
+
+.update-card a {
+  text-decoration: none;
+  color: #111827;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.update-card p {
+  margin-top: 10px;
+  color: #666;
+}
+
+/* FOOTER */
+
+.footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width: 768px) {
+
+  .header h1 {
+    font-size: 32px;
+  }
+
+  .hero h2 {
+    font-size: 30px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
