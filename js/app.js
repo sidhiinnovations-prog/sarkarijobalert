@@ -7,7 +7,7 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// YOUR FIREBASE CONFIG
+// FIREBASE CONFIG
 const firebaseConfig = {
   apiKey: "AIzaSyAVCaIQrcF0z4SvxMY_aZZL57KkSqFqRQM",
   authDomain: "student-alert-desk.firebaseapp.com",
@@ -17,13 +17,13 @@ const firebaseConfig = {
   appId: "1:104180713565:web:ae431ec36ea5b3f32f65b4"
 };
 
-// INIT
+// INIT FIREBASE
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 console.log("Firebase Connected Successfully");
 
-// LOAD NOTIFICATIONS
+// NOTIFICATIONS
 async function loadNotifications() {
 
   const querySnapshot = await getDocs(collection(db, "notifications"));
@@ -37,18 +37,20 @@ async function loadNotifications() {
     html += `
       <li>
         <span class="new-tag">NEW</span>
-        <a href="${data.link}">
+
+        <a href="${data.link}" target="_blank">
           ${data.title}
         </a>
+
         <span class="date">NEW</span>
       </li>
     `;
   });
 
-  document.getElementById("notificationData").innerHTML = html;
+  document.getElementById("notifications-data").innerHTML = html;
 }
 
-// LOAD RESULTS
+// RESULTS
 async function loadResults() {
 
   const querySnapshot = await getDocs(collection(db, "results"));
@@ -61,17 +63,17 @@ async function loadResults() {
 
     html += `
       <li>
-        <a href="${data.link}">
+        <a href="${data.link}" target="_blank">
           ${data.title}
         </a>
       </li>
     `;
   });
 
-  document.getElementById("resultsData").innerHTML = html;
+  document.getElementById("results-data").innerHTML = html;
 }
 
-// LOAD ADMIT CARDS
+// ADMIT CARDS
 async function loadAdmitCards() {
 
   const querySnapshot = await getDocs(collection(db, "admitcards"));
@@ -84,17 +86,17 @@ async function loadAdmitCards() {
 
     html += `
       <li>
-        <a href="${data.link}">
+        <a href="${data.link}" target="_blank">
           ${data.title}
         </a>
       </li>
     `;
   });
 
-  document.getElementById("admitData").innerHTML = html;
+  document.getElementById("admitcards-data").innerHTML = html;
 }
 
-// LOAD JOBS
+// JOBS
 async function loadJobs() {
 
   const querySnapshot = await getDocs(collection(db, "jobs"));
@@ -107,17 +109,17 @@ async function loadJobs() {
 
     html += `
       <li>
-        <a href="${data.link}">
+        <a href="${data.link}" target="_blank">
           ${data.title}
         </a>
       </li>
     `;
   });
 
-  document.getElementById("jobsData").innerHTML = html;
+  document.getElementById("jobs-data").innerHTML = html;
 }
 
-// LOAD ADMISSIONS
+// ADMISSIONS
 async function loadAdmissions() {
 
   const querySnapshot = await getDocs(collection(db, "admissions"));
@@ -130,17 +132,17 @@ async function loadAdmissions() {
 
     html += `
       <li>
-        <a href="${data.link}">
+        <a href="${data.link}" target="_blank">
           ${data.title}
         </a>
       </li>
     `;
   });
 
-  document.getElementById("admissionData").innerHTML = html;
+  document.getElementById("admissions-data").innerHTML = html;
 }
 
-// LOAD COMING SOON
+// COMING SOON
 async function loadComingSoon() {
 
   const querySnapshot = await getDocs(collection(db, "comingsoon"));
@@ -153,21 +155,23 @@ async function loadComingSoon() {
 
     html += `
       <div class="coming-box">
+
         <div class="coming-date">
-          ${data.date}
+          ${data.date || ""}
         </div>
 
         <div class="coming-title">
           ${data.title}
         </div>
+
       </div>
     `;
   });
 
-  document.getElementById("comingData").innerHTML = html;
+  document.getElementById("comingsoon-data").innerHTML = html;
 }
 
-// START ALL
+// LOAD ALL
 loadNotifications();
 loadResults();
 loadAdmitCards();
