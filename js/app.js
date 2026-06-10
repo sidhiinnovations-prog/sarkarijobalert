@@ -1,3 +1,13 @@
+// FIREBASE IMPORT
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// YOUR FIREBASE CONFIG
 const firebaseConfig = {
   apiKey: "AIzaSyAVCaIQrcF0z4SvxMY_aZZL57KkSqFqRQM",
   authDomain: "student-alert-desk.firebaseapp.com",
@@ -7,10 +17,160 @@ const firebaseConfig = {
   appId: "1:104180713565:web:ae431ec36ea5b3f32f65b4"
 };
 
-// INITIALIZE FIREBASE
-
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
+// INIT
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 console.log("Firebase Connected Successfully");
+
+// LOAD NOTIFICATIONS
+async function loadNotifications() {
+
+  const querySnapshot = await getDocs(collection(db, "notifications"));
+
+  let html = "";
+
+  querySnapshot.forEach((doc) => {
+
+    const data = doc.data();
+
+    html += `
+      <li>
+        <span class="new-tag">NEW</span>
+        <a href="${data.link}">
+          ${data.title}
+        </a>
+        <span class="date">NEW</span>
+      </li>
+    `;
+  });
+
+  document.getElementById("notificationData").innerHTML = html;
+}
+
+// LOAD RESULTS
+async function loadResults() {
+
+  const querySnapshot = await getDocs(collection(db, "results"));
+
+  let html = "";
+
+  querySnapshot.forEach((doc) => {
+
+    const data = doc.data();
+
+    html += `
+      <li>
+        <a href="${data.link}">
+          ${data.title}
+        </a>
+      </li>
+    `;
+  });
+
+  document.getElementById("resultsData").innerHTML = html;
+}
+
+// LOAD ADMIT CARDS
+async function loadAdmitCards() {
+
+  const querySnapshot = await getDocs(collection(db, "admitcards"));
+
+  let html = "";
+
+  querySnapshot.forEach((doc) => {
+
+    const data = doc.data();
+
+    html += `
+      <li>
+        <a href="${data.link}">
+          ${data.title}
+        </a>
+      </li>
+    `;
+  });
+
+  document.getElementById("admitData").innerHTML = html;
+}
+
+// LOAD JOBS
+async function loadJobs() {
+
+  const querySnapshot = await getDocs(collection(db, "jobs"));
+
+  let html = "";
+
+  querySnapshot.forEach((doc) => {
+
+    const data = doc.data();
+
+    html += `
+      <li>
+        <a href="${data.link}">
+          ${data.title}
+        </a>
+      </li>
+    `;
+  });
+
+  document.getElementById("jobsData").innerHTML = html;
+}
+
+// LOAD ADMISSIONS
+async function loadAdmissions() {
+
+  const querySnapshot = await getDocs(collection(db, "admissions"));
+
+  let html = "";
+
+  querySnapshot.forEach((doc) => {
+
+    const data = doc.data();
+
+    html += `
+      <li>
+        <a href="${data.link}">
+          ${data.title}
+        </a>
+      </li>
+    `;
+  });
+
+  document.getElementById("admissionData").innerHTML = html;
+}
+
+// LOAD COMING SOON
+async function loadComingSoon() {
+
+  const querySnapshot = await getDocs(collection(db, "comingsoon"));
+
+  let html = "";
+
+  querySnapshot.forEach((doc) => {
+
+    const data = doc.data();
+
+    html += `
+      <div class="coming-box">
+        <div class="coming-date">
+          ${data.date}
+        </div>
+
+        <div class="coming-title">
+          ${data.title}
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById("comingData").innerHTML = html;
+}
+
+// START ALL
+loadNotifications();
+loadResults();
+loadAdmitCards();
+loadJobs();
+loadAdmissions();
+loadComingSoon();
