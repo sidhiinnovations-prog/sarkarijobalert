@@ -1,0 +1,119 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#f5f5f5;
+      padding:40px;
+    }
+
+    .admin-box{
+      max-width:900px;
+      margin:auto;
+      background:#fff;
+      padding:30px;
+      border-radius:10px;
+    }
+
+    h1{
+      margin-bottom:25px;
+    }
+
+    input,
+    textarea,
+    select{
+      width:100%;
+      padding:12px;
+      margin-bottom:20px;
+      border:1px solid #ddd;
+      border-radius:6px;
+      font-size:14px;
+    }
+
+    textarea{
+      height:250px;
+      resize:none;
+    }
+
+    button{
+      background:#c40000;
+      color:#fff;
+      border:none;
+      padding:14px 22px;
+      border-radius:6px;
+      cursor:pointer;
+      font-size:15px;
+      font-weight:600;
+    }
+
+    button:hover{
+      background:#a00000;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="admin-box">
+
+    <h1>Student Alert Desk Admin</h1>
+
+    <input type="file" id="pdfUpload">
+
+    <select id="category">
+
+      <option value="jobs">Jobs</option>
+
+      <option value="results">Results</option>
+
+      <option value="admitcards">Admit Cards</option>
+
+      <option value="admissions">Admissions</option>
+
+      <option value="notifications">Notifications</option>
+
+    </select>
+
+    <input type="text" id="title" placeholder="Title">
+
+    <input type="text" id="slug" placeholder="Slug">
+
+    <input type="text" id="date" placeholder="Date">
+
+    <textarea id="content" placeholder="Content"></textarea>
+
+    <button onclick="publishPost()">
+      Publish Post
+    </button>
+
+  </div>
+
+  <script type="module" src="admin.js"></script>
+
+</body>
+
+</html>
