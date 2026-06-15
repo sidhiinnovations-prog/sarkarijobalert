@@ -1,3 +1,4 @@
+// FIREBASE IMPORT
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
@@ -6,71 +7,42 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+// FIREBASE CONFIG
 const firebaseConfig = {
-
   apiKey: "AIzaSyAVCaIQrcF0z4SvxMY_aZZL57KkSqFqRQM",
-
   authDomain: "student-alert-desk.firebaseapp.com",
-
   projectId: "student-alert-desk",
-
   storageBucket: "student-alert-desk.firebasestorage.app",
-
   messagingSenderId: "104180713565",
-
   appId: "1:104180713565:web:ae431ec36ea5b3f32f65b4"
-
 };
 
+// INIT FIREBASE
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
-const urlParams = new URLSearchParams(window.location.search);
-
-const slug = urlParams.get("slug");
+// GET SLUG FROM URL
+const slug = window.location.pathname.replace("/", "");
 
 async function loadPost() {
 
-  const collections = [
-    "jobs",
-    "results",
-    "admitcards",
-    "admissions",
-    "notifications"
-  ];
+  const querySnapshot = await getDocs(collection(db, "results"));
 
-  for(const col of collections){
+  querySnapshot.forEach((doc) => {
 
-    const querySnapshot = await getDocs(collection(db, col));
+    const data = doc.data();
 
-    querySnapshot.forEach((doc)=>{
+    if(data.slug === slug){
 
-      const data = doc.data();
+      document.getElementById("post-title").innerHTML = data.title;
 
-      if(data.slug === slug){
+      document.getElementById("post-content").innerHTML = data.content;
 
-        document.getElementById("postData").innerHTML = `
+      document.title = data.title;
 
-          <h1 class="post-title">
-            ${data.title}
-          </h1>
+    }
 
-          <div class="post-date">
-            ${data.date}
-          </div>
-
-          <div class="post-content">
-            ${data.content}
-          </div>
-
-        `;
-
-      }
-
-    });
-
-  }
+  });
 
 }
 

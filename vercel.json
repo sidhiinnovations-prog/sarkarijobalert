@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/mpesb-group-5-paramedical-2026",
+      "destination": "/post.html"
+    }
+  ]
+}
