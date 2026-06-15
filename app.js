@@ -63,7 +63,7 @@ async function loadResults() {
 
     html += `
       <li>
-        <a href="${data.link}" target="_blank">
+        <a href="${data.page}" target="_blank">
           ${data.title}
         </a>
       </li>
